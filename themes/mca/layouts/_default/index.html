@@ -1,6 +1,6 @@
 {{ partial "header.html" . -}}
 <header><h1>{{ .Title }}</h1></header>
 <article>
+This is from index.html
 {{ .Content -}}
-{{.GitInfo | jsonify}}
 {{ partial "footer.html" . }}
