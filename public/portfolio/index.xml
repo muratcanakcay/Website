@@ -16,8 +16,7 @@
 		<pubDate>Thu, 14 Jul 2022 00:17:03 +0200</pubDate>
 		
 		<guid>http://localhost:1313/portfolio/computer-graphics/</guid>
-		<description>&lt;p&gt;{{ .LastMod }}&lt;/p&gt;
-</description>
+		<description></description>
 	</item>
 	
 	</channel>

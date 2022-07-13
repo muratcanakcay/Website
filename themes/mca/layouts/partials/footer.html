@@ -3,7 +3,14 @@
 </article>
 </main>
 <footer>
-	<a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}  {{ .GitInfo }}</a><br><br>
+	<a href="{{ .Site.BaseURL }}">
+        {{ .Site.BaseURL }} | Last Commit:  
+        {{ if .GitInfo }}
+            {{ with .GitInfo }}
+                {{ .AbbreviatedHash }}
+            {{ end }}
+        {{ end }}
+    </a><br><br>
 	<a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
 </footer>
 </body>
