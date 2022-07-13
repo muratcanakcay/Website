@@ -2,4 +2,5 @@
 <header><h1>{{ .Title }}</h1></header>
 <article>
 {{ .Content -}}
+{{.GitInfo | jsonify}}
 {{ partial "footer.html" . }}

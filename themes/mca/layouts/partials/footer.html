@@ -4,13 +4,7 @@
 </main>
 <footer>
 	<a href="{{ .Site.BaseURL }}">
-        {{ .Site.BaseURL }} | Last Commit:  
-        {{ if .GitInfo }}
-            {{ with .GitInfo }}
-                {{ .AbbreviatedHash }}
-            {{ end }}
-        {{ end }}
-    </a><br><br>
+        {{ .Site.BaseURL }} | Last Commit: {{ if .GitInfo }}{{ .GitInfo | jsonify }}{{ end }}</a><br><br>
 	<a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
 </footer>
 </body>
