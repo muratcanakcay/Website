@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+	<title>Muratcan Akcay | Software Developer</title>
+	<link>http://localhost:1313/portfolio/</link>
+	<description>Recent content in Portfolios on Muratcan Akcay | Software Developer</description>
+	<generator>Hugo -- gohugo.io</generator>
+	<language>en-us</language>
+	<lastBuildDate>Thu, 14 Jul 2022 00:17:03 +0200</lastBuildDate>
+    
+        <atom:link href="http://localhost:1313/portfolio/index.xml" rel="self" type="application/rss+xml" />
+	
+	
+	<item>
+		<title>Computer Graphics</title>
+		<link>http://localhost:1313/portfolio/computer-graphics/</link>
+		<pubDate>Thu, 14 Jul 2022 00:17:03 +0200</pubDate>
+		
+		<guid>http://localhost:1313/portfolio/computer-graphics/</guid>
+		<description>&lt;p&gt;{{ .LastMod }}&lt;/p&gt;
+</description>
+	</item>
+	
+	</channel>
+</rss>

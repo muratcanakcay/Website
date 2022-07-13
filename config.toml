@@ -1,0 +1,5 @@
+baseURL = 'https://muratcanakcay.com/'
+languageCode = 'en-us'
+title = 'Muratcan Akcay | Software Developer'
+theme = 'mca'
+enableGitInfo = 'true'

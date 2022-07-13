@@ -1,1 +1,0 @@
-"This is where I will build a personal website using a template (massively) I obtained from html5up.net. Also, this project will give me the opportunity to work on my HTML, CSS and JavaScript skills." 
