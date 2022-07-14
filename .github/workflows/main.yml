@@ -20,5 +20,5 @@ jobs:
           HUGO_EXTENDED: true
           TARGET_REPO: muratcanakcay/muratcanakcay.github.io
           TARGET_BRANCH: master
-          TOKEN: ${{ secrets.TOKEN }}          
+          TOKEN: ${{ secrets.DEPLOY_TOKEN }}          
           CNAME: www.muratcanakcay.com
