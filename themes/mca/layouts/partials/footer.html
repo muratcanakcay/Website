@@ -4,7 +4,22 @@
 </main>
 <footer>
 	<a href="{{ .Site.BaseURL }}">
-        {{ .Site.BaseURL }} | Last Commit: {{ if .GitInfo }}{{ .GitInfo.AbbreviatedHash }}{{ end }}</a><br><br>
+        {{ .Site.BaseURL }} 
+    </a>
+
+    {{ if .GitInfo }} | Last commit:
+    <a href="https://github.com/muratcanakcay/Website/commit/{{ .GitInfo.Hash }}">
+            {{ .GitInfo.AbbreviatedHash }}
+        </a>
+        
+        on 
+        
+        <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Lastmod.Format "02.07.2006" }}
+        </time>
+    {{ end }}
+    
+    <br><br>
 	<!-- <a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a> -->
 </footer>
 </body>

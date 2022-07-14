@@ -43,3 +43,5 @@ footer {
 #nextart,#prevart {
 	max-width: 33% ;
 }
+
+img[alt=Hugo] {width: 20%;}
