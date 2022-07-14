@@ -44,4 +44,5 @@ footer {
 	max-width: 33% ;
 }
 
-img[alt=Hugo] {width: 20%;}
+img[alt=Hugo] {width: 20%; padding-left: 2%;}
+img[alt=GithubPages] {width: 15%;}
