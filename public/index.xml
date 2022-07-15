@@ -11,6 +11,15 @@
 	
 	
 	<item>
+		<title>Portfolios</title>
+		<link>http://localhost:1313/portfolio/</link>
+		<pubDate>Fri, 15 Jul 2022 03:47:10 +0200</pubDate>
+		
+		<guid>http://localhost:1313/portfolio/</guid>
+		<description></description>
+	</item>
+	
+	<item>
 		<title>About Me</title>
 		<link>http://localhost:1313/about-me/</link>
 		<pubDate>Fri, 15 Jul 2022 02:41:28 +0200</pubDate>
@@ -18,15 +27,6 @@
 		<guid>http://localhost:1313/about-me/</guid>
 		<description>&lt;p&gt;Hello! I&amp;rsquo;m Muratcan and welcome to my personal website. Since you&amp;rsquo;ve clicked the &amp;ldquo;About Me&amp;rdquo; section you must be curious about who I am. So let me introduce myself&amp;hellip;&lt;/p&gt;
 </description>
-	</item>
-	
-	<item>
-		<title>Portfolios</title>
-		<link>http://localhost:1313/portfolio/</link>
-		<pubDate>Thu, 14 Jul 2022 00:17:03 +0200</pubDate>
-		
-		<guid>http://localhost:1313/portfolio/</guid>
-		<description></description>
 	</item>
 	
 	</channel>
