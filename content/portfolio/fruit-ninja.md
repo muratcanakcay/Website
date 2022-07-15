@@ -5,3 +5,4 @@ type: "portfolio"
 draft: false
 ---
 
+Fruit Ninja clone implementation using C++ WinAPI32.
