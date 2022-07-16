@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-	<title>Muratcan Akcay | Software Developer</title>
+	<title>Muratcan Akcay | Personal Website</title>
 	<link>http://localhost:1313/portfolio/</link>
-	<description>Recent content in Portfolios on Muratcan Akcay | Software Developer</description>
+	<description>Recent content in Portfolios on Muratcan Akcay | Personal Website</description>
 	<generator>Hugo -- gohugo.io</generator>
 	<language>en-us</language>
 	<lastBuildDate>Fri, 15 Jul 2022 03:47:10 +0200</lastBuildDate>
@@ -16,7 +16,8 @@
 		<pubDate>Fri, 15 Jul 2022 03:47:10 +0200</pubDate>
 		
 		<guid>http://localhost:1313/portfolio/fruit-ninja/</guid>
-		<description></description>
+		<description>&lt;p&gt;Fruit Ninja clone implementation using C++ WinAPI32.&lt;/p&gt;
+</description>
 	</item>
 	
 	<item>

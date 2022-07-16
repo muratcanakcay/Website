@@ -1,0 +1,19 @@
+<head>
+	<title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>		
+	<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
+	{{ if isset .Params "tags" }}<meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}">
+	{{ end -}}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index, follow">
+	<meta charset="utf-8">
+    {{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
+	{{ end -}}
+    <link rel="canonical" href="{{ .Site.BaseURL }}">
+	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>	
+    {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed") }}
+    {{- with resources.Get "sass/main.scss" }}
+    {{- $style := . | resources.ToCSS | minify }}
+    <link rel="stylesheet" href="{{ $style.Permalink | relURL }}" type="text/css">
+    {{ end -}}
+    <link rel='stylesheet' type='text/css' href='/css/style.css'>
+</head>

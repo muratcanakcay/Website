@@ -1,7 +1,8 @@
 ---
 title: "About Me"
-date: 2022-07-15T02:41:28+02:00
+description: "about muratcan akcay"
 type: "about-me"
+date: 2022-07-15T02:41:28+02:00
 draft: false
 ---
 Hello! I'm Muratcan and welcome to my personal website. Since you've clicked the "About Me" section you must be curious about who I am. So let me introduce myself...

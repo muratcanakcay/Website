@@ -1,7 +1,8 @@
 ---
 title: "Fruit Ninja"
-date: 2022-07-15T03:47:10+02:00
+description: "fruit ninja clone with win32 api"
 type: "portfolio"
+date: 2022-07-15T03:47:10+02:00
 draft: false
 ---
 
