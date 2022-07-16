@@ -6,24 +6,18 @@
 	<a href="{{ .Site.BaseURL }}">
         {{ .Site.BaseURL }} 
     </a>
-<!-- TODO: Fix the commit hash! -->
-    {{ if .GitInfo }} | Last {{ if .IsHome }}site {{ else }}page {{ end }}commit:    
-    {{ $gitInfo := .GitInfo }}    
-    {{ if .IsHome }}        
-        {{ $pages := $.Site.Pages }}    
-        {{ $pages = sort $pages "Lastmod" "desc" }}
-        {{ $lastPage := (index ($pages) 0) }}
-        {{ $gitInfo = $lastPage.GitInfo }}        
-    {{ end }}
-    <a href="https://github.com/muratcanakcay/Website/commit/{{ $gitInfo.Hash }}">
-            {{ $gitInfo.AbbreviatedHash }}
-        </a>
-        
-        on
 
-        <time datetime="{{ $gitInfo.AuthorDate.Format "2006-01-02T15:04:05Z07:00" }}">
-                {{ $gitInfo.AuthorDate.Format "02.07.2006" }}
-        </time>        
+    {{ if .GitInfo }} | Last {{ if .IsHome }}site {{ else }}page {{ end }}commit:    
+        {{ $gitInfo := .GitInfo }}    
+        {{ if .IsHome }}        
+            {{ $pages := $.Site.Pages }}    
+            {{ $pages = sort $pages "Lastmod" "desc" }}
+            {{ $lastPage := (index ($pages) 0) }}
+            {{ $gitInfo = $lastPage.GitInfo }}        
+        {{ end }}
+        <a href="https://github.com/muratcanakcay/Website/commit/{{ $gitInfo.Hash }}">{{ $gitInfo.AbbreviatedHash }}</a>
+        on
+        <time datetime="{{ $gitInfo.AuthorDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $gitInfo.AuthorDate.Format "02.07.2006" }}</time>        
     {{ end }}
     
     <br><br>
