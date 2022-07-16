@@ -4,7 +4,7 @@
 </main>
 <footer>
 	<a href="{{ .Site.BaseURL }}">
-        {{ .Site.BaseURL }} 
+        {{- .Site.BaseURL -}} 
     </a>
 
     {{ if .GitInfo }} | Last {{ if .IsHome }}site {{ else }}page {{ end }}commit:    
@@ -15,9 +15,9 @@
             {{ $lastPage := (index ($pages) 0) }}
             {{ $gitInfo = $lastPage.GitInfo }}        
         {{ end }}
-        <a href="https://github.com/muratcanakcay/Website/commit/{{ $gitInfo.Hash }}">{{ $gitInfo.AbbreviatedHash }}</a>
+        <a href="https://github.com/muratcanakcay/Website/commit/{{ $gitInfo.Hash }}">{{- $gitInfo.AbbreviatedHash -}}</a>
         on
-        <time datetime="{{ $gitInfo.AuthorDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $gitInfo.AuthorDate.Format "02.07.2006" }}</time>        
+        <time datetime="{{ $gitInfo.AuthorDate.Format "2006-01-02T15:04:05Z07:00" }}">{{- $gitInfo.AuthorDate.Format "02.07.2006" -}}</time>        
     {{ end }}
     
     <br><br>

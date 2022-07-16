@@ -1,0 +1,22 @@
+{
+  "name": "personalwebsite",
+  "version": "1.0.0",
+  "description": "www.muratcanakcay.com",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muratcanakcay/Website.git"
+  },
+  "author": "Muratcan Akcay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muratcanakcay/Website/issues"
+  },
+  "homepage": "https://github.com/muratcanakcay/Website#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}

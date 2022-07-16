@@ -1,5 +1,11 @@
-baseURL = 'https://muratcanakcay.com/'
+baseURL = 'https://www.muratcanakcay.com/'
 languageCode = 'en-us'
-title = 'Muratcan Akcay | Software Developer'
+title = 'Muratcan Akcay | Personal Website'
 theme = 'mca'
 enableGitInfo = 'true'
+relativeURLS = true
+
+[module]
+[[module.mounts]]
+    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    target = "assets/js/bootstrap.bundle.min.js"
