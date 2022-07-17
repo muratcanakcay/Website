@@ -9,7 +9,7 @@
             <a href="{{ .Site.BaseURL }}">
                 {{- .Site.BaseURL -}} 
             </a>        
-            {{ if .GitInfo }} | Last {{ if .IsHome }}site {{ else }}page {{ end }}commit:    
+            {{ if .GitInfo }} | Last {{ if .IsHome }}site {{ else }}page {{ end }}commit: 
                 {{- $gitInfo := .GitInfo }}    
                 {{- if .IsHome }}        
                     {{- $pages := $.Site.Pages }}    

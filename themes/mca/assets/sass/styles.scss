@@ -1,0 +1,50 @@
+main {
+	max-width: 800px ;
+	margin: auto ;
+}
+
+img {
+	max-width: 100% ;
+}
+
+header h1 {
+	text-align: center ;
+}
+
+footer {
+	text-align: center ;
+	clear: both ;
+}
+
+.jumbotron {
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--bs-light);
+    border-radius: .3rem;  
+}
+
+/* For TAGLIST.HTML */
+.taglist {
+	text-align: center ;
+	clear: both ;
+}
+
+/* For NEXTPREV.HTML */
+#nextprev {
+	/* The container for both the previous and next articles. */
+}
+#prevart {
+	float: left ;
+	text-align: left ;
+}
+#nextart {
+	float: right ;
+	text-align: right ;
+}
+#nextart,#prevart {
+	max-width: 33% ;
+}
+
+img[alt=Hugo] {width: 20%; padding-left: 2%;}
+img[alt=GithubPages] {width: 15%;}
+img[alt=Bootstrap] {width: 9%;}
