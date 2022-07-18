@@ -1,33 +1,25 @@
 
 <div style="text-align:center">  
-<canvas id="graphBanner" width="800" height="100" style="background-color: #ffffff; border:1px solid #ffffff;">
-</canvas>
+    <canvas id="graphBanner" width="800" height="100" style="background-color: #ffffff; border:1px solid #ffffff;"/>
 </div>
 
-
 <script>
-
     var viewport_width = document.documentElement.clientWidth;
-    var c = document.getElementById("graphBanner");    
-    var ctx = c.getContext("2d");
     var new_viewport_width = viewport_width;
-    DrawBanner(viewport_width);
     
-    window.addEventListener('resize', function() {
-	// viewport and full window dimensions will change	
-	new_viewport_width = document.documentElement.clientWidth;
-    console.log("new: ", new_viewport_width);
-    clearInterval(id);
-    DrawBanner();
-    });
+    var c = document.getElementById("graphBanner");    
+    c.width = viewport_width >= 810 ? 800 : viewport_width*0.9;
+    
+    var ctx = c.getContext("2d");
+    var x = 0;
+    const r = 40;
+    var step = 1;
+    var id;
+    
+    DrawBanner(viewport_width);
         
     function DrawBanner() {
-        x = 0;
-        r = 40;
-        step = 1;
-        c.width = viewport_width >= 810 ? 800 : viewport_width*0.9;
-
-        const id = setInterval(() => {
+        id = setInterval(() => {
             if(new_viewport_width !== viewport_width)
             {   
                 viewport_width = new_viewport_width;
@@ -40,19 +32,15 @@
             ctx.stroke();
             
             x += step;
-
-            if (x > c.width - 2*r) {
-                step = -1;
-                //clearInterval(id);
-            }
-
-            if (x < 0) {
-                step = 1;
-            }
+            if (x > c.width - 2*r) { step = -1; }
+            if (x < 0) { step = 1; }
         }, 10);
     }
 
-    
-
-
+    window.addEventListener('resize', function() {
+		new_viewport_width = document.documentElement.clientWidth;
+        console.log("new: ", new_viewport_width);
+        clearInterval(id);
+        DrawBanner();
+    });
 </script>
