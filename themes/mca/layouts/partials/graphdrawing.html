@@ -1,0 +1,58 @@
+
+<div style="text-align:center">  
+<canvas id="graphBanner" width="800" height="100" style="background-color: #ffffff; border:1px solid #ffffff;">
+</canvas>
+</div>
+
+
+<script>
+
+    var viewport_width = document.documentElement.clientWidth;
+    var c = document.getElementById("graphBanner");    
+    var ctx = c.getContext("2d");
+    var new_viewport_width = viewport_width;
+    DrawBanner(viewport_width);
+    
+    window.addEventListener('resize', function() {
+	// viewport and full window dimensions will change	
+	new_viewport_width = document.documentElement.clientWidth;
+    console.log("new: ", new_viewport_width);
+    clearInterval(id);
+    DrawBanner();
+    });
+        
+    function DrawBanner() {
+        x = 0;
+        r = 40;
+        step = 1;
+        c.width = viewport_width >= 810 ? 800 : viewport_width*0.9;
+
+        const id = setInterval(() => {
+            if(new_viewport_width !== viewport_width)
+            {   
+                viewport_width = new_viewport_width;
+                c.width = viewport_width >= 810 ? 800 : viewport_width*0.9;
+            }
+            
+            ctx.clearRect(0, 0, c.width, c.height);            
+            ctx.beginPath();
+            ctx.arc(x+r, 50, r, 0, 2 * Math.PI);
+            ctx.stroke();
+            
+            x += step;
+
+            if (x > c.width - 2*r) {
+                step = -1;
+                //clearInterval(id);
+            }
+
+            if (x < 0) {
+                step = 1;
+            }
+        }, 10);
+    }
+
+    
+
+
+</script>
