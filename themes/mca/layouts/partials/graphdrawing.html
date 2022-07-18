@@ -12,9 +12,10 @@
     
     var ctx = c.getContext("2d");
     var x = 0;
-    const r = 40;
-    var step = 1;
+    const r = 4;
     var id;
+    let circles = [0, 20, 40]
+    var steps = [1, 1, 1];
     
     DrawBanner(viewport_width);
         
@@ -27,14 +28,19 @@
             }
             
             ctx.clearRect(0, 0, c.width, c.height);            
-            ctx.beginPath();
-            ctx.arc(x+r, 50, r, 0, 2 * Math.PI);
-            ctx.stroke();
+            circles.forEach(x => {
+                ctx.beginPath();
+                ctx.arc(x+r, 50, r, 0, 2 * Math.PI);
+                ctx.stroke();
+            })            
             
-            x += step;
-            if (x > c.width - 2*r) { step = -1; }
-            if (x < 0) { step = 1; }
-        }, 10);
+            for (var i = 0; i<3; i++)
+            {
+                circles[i] += steps[i];
+                if (circles[i] > c.width - 2*r) { steps[i] = -1; }
+                if (circles[i] < 0) { steps[i] = 1; }
+            }
+        }, 1);
     }
 
     window.addEventListener('resize', function() {
