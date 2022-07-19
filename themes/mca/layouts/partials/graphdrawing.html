@@ -1,7 +1,9 @@
 
 <div style="text-align:center">  
-    <canvas id="graphBanner" width="800" height="100" style="background-color: #ffffff; border:1px solid #ffffff;"/>
+    <canvas class="rounded-pill" id="graphBanner" width="800" height="100" style="border:1px solid #aaaaaa;">
 </div>
+
+<img id="metalic-bg" src="/img/misc/metalic-bg.png" hidden="true">
 
 <script>
     var viewport_width = document.documentElement.clientWidth;
@@ -12,43 +14,64 @@
     
     var ctx = c.getContext("2d");
     var x = 0;
-    const r = 4;
+    const r = 2;
     var id;
     let circles = [[0, 40], [20, 40], [40, 40]]
-    var steps = [[1,2], [1,0], [1,-2]];
+    var steps = [[0.3,0.3], [0.2,0.4], [0.3,-0.5]];
+    let start = 0;
     
-    DrawBanner(viewport_width);
+    drawBanner();
         
-    function DrawBanner() {
-        id = setInterval(() => {
-            if(new_viewport_width !== viewport_width)
+    function drawBanner() {
+        animate();
+    }
+
+    function animate(timestamp) { 
+        const elapsed = timestamp - start;
+        if (elapsed > 30) {
+            start = timestamp;
+            tick();
+        }
+        requestAnimationFrame(animate); 
+    }
+
+    function tick() {
+        if (new_viewport_width !== viewport_width)
             {   
                 viewport_width = new_viewport_width;
                 c.width = viewport_width >= 810 ? 800 : viewport_width*0.9;
             }
+            ctx.fillStyle = "#0000ff";
+            ctx.strokeStyle = "#000000";
+            ctx.textAlign = "center";
+            ctx.font = "bold 55px Sans-serif";            
             
-            ctx.clearRect(0, 0, c.width, c.height);            
+            ctx.clearRect(0, 0, c.width, c.height);
+            var img = document.getElementById("metalic-bg");
+            ctx.drawImage(img, 0, 0, c.width, c.height)
             circles.forEach(v => {
                 ctx.beginPath();
                 ctx.arc(v[0]+r, v[1], r, 0, 2 * Math.PI);
                 ctx.stroke();
-            })            
+            })
+            ctx.fillText( {{ .Title }} , c.width/2, 2*c.height/3);
+            ctx.strokeStyle = "#333333";
+            ctx.strokeText({{ .Title }}, c.width/2, 2*c.height/3);
             
-            for (var i = 0; i<3; i++)
-            {
-                circles[i][0] += steps[i][0];
-                circles[i][1] += steps[i][1];
-                if (circles[i][0] > c.width - 2*r) { steps[i][0] = -1; }
-                if (circles[i][0] < 0) { steps[i][0] = 1; }
-                if (circles[i][1] > c.height + r) { circles[i][1] = -r; }
-                if (circles[i][1] < -r) { circles[i][1] = c.height + r; }
-            }
-        }, 50);
+        for (var i = 0; i<3; i++)
+        {
+            circles[i][0] += steps[i][0];
+            circles[i][1] += steps[i][1];
+            if (circles[i][0] > c.width - 2*r) { steps[i][0] = -1; }
+            if (circles[i][0] < 0) { steps[i][0] = 1; }
+            if (circles[i][1] > c.height + r) { circles[i][1] = -r; }
+            if (circles[i][1] < -r) { circles[i][1] = c.height + r; }
+        }
     }
 
     window.addEventListener('resize', function() {
 		new_viewport_width = document.documentElement.clientWidth;        
         clearInterval(id);
-        DrawBanner();
+        rawBanner();
     });
 </script>
