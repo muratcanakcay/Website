@@ -1,6 +1,6 @@
 
 <div style="text-align:center">  
-    <canvas class="rounded-pill" id="graphBanner" width="1000" height="100" style="border:1px solid #aaaaaa;">
+    <canvas class="rounded-pill mt-4" id="graphBanner" width="1000" height="100" style="border:1px solid #aaaaaa;">
 </div>
 
 <img id="metalic-bg" src="/img/misc/metalic-bg.png" hidden="true">
@@ -11,6 +11,7 @@
     
     var c = document.getElementById("graphBanner");    
     c.width = viewport_width >= 1010 ? 1000 : viewport_width*0.9;
+    c.height = c.width / 10 
     
     var ctx = c.getContext("2d");
     var x = 0;
@@ -40,6 +41,7 @@
             {   
                 viewport_width = new_viewport_width;
                 c.width = viewport_width >= 1010 ? 1000 : viewport_width*0.9;
+                c.height = c.width / 10 
             }
             ctx.fillStyle = "#0000ff";
             ctx.strokeStyle = "#000000";
