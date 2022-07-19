@@ -9,7 +9,7 @@
             <a href="{{ .Site.BaseURL }}">{{- .Site.BaseURL -}}</a>
         </div>        
         {{ if .GitInfo }} 
-        <div class="col-12 col-md text- text-md-start lh-1 nav-link text-white">
+        <div class="col-12 col-md text-center text-md-start lh-1 nav-link text-white">
             Last {{ if .IsHome }}site {{ else }}page {{ end }}commit: 
             {{- $gitInfo := .GitInfo }}    
             {{- if .IsHome }}        

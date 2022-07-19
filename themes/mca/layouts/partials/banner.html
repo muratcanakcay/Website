@@ -1,0 +1,111 @@
+
+<div style="text-align:center">  
+    <canvas class="rounded-top mt-4 mb-2" id="graphBanner" width="1000" height="100" style="border:1px solid #aaaaaa;">
+</div>
+
+<img id="metalic-bg" src="/img/misc/metalic-bg.png" hidden="true">
+
+<script>
+    var viewport_width = document.documentElement.clientWidth;
+    var new_viewport_width = viewport_width;
+    
+    var c = document.getElementById("graphBanner");    
+    c.width = viewport_width >= 1010 ? 1000 : viewport_width*0.9;
+    c.height = c.width / 10 
+    
+    var ctx = c.getContext("2d");
+    var x = 0;
+    const r = 2;
+    var id;
+    let circles = [[925, 10], [870, 40], [140, 80], [170, 60], [239, 10], [290, 80], [310, 40], [450, 15], [600, 70], [670, 35], [710, 25], [740, 60], [902, 73], [811, 14], [122, 67], [192, 54], [201, 2], [298, 27], [343, 7], [403, 75], [587, 52], [632, 19], [711, 12], [725, 43]]
+    var steps = [[0.3,0.3], [-0.2,0.4], [0.3,-0.5], [-0.1,0.3], [-0.2,-0.4], [0.5,-0.2], [-0.3,0.1], [0.2,-0.4], [0.5,0.2], [-0.4,0.1], [-0.3,-0.1], [0.2,0.1], [0.5,-0.2], [-0.3,0.1], [0.2,-0.4], [0.5,0.2], [0.2,0.1], [0.3,0.3], [-0.2,0.4],[-0.4,0.1], [-0.3,-0.1], [0.3,-0.5], [-0.1,0.3], [-0.2,-0.4]];
+    let start = 0;
+    
+    drawBanner();
+        
+    function drawBanner() {
+        animate();
+    }
+
+    function animate(timestamp) { 
+        const elapsed = timestamp - start;
+        if (elapsed > 30) {
+            start = timestamp;
+            tick();
+        }
+        requestAnimationFrame(animate); 
+    }
+
+    function tick() {
+        if (new_viewport_width !== viewport_width)
+        {   
+            viewport_width = new_viewport_width;
+            c.width = viewport_width >= 1010 ? 1000 : viewport_width*0.9;
+            c.height = c.width / 10 
+        }
+        ctx.fillStyle = "#0000ff";
+        ctx.strokeStyle = "#000000";
+        ctx.textAlign = "center";
+        if (viewport_width > 900)
+        {ctx.font = "bold 55px Sans-serif";}
+        else if (viewport_width > 650)
+        {ctx.font = "bold 45px Sans-serif";}
+        else if (viewport_width > 500)
+        {ctx.font = "bold 35px Sans-serif";}
+        else if (viewport_width > 400)
+        {ctx.font = "bold 30px Sans-serif";}
+        else if (viewport_width > 340)
+        {ctx.font = "bold 25px Sans-serif";}
+        else
+        {ctx.font = "bold 20px Sans-serif";}
+
+        
+        ctx.clearRect(0, 0, c.width, c.height);
+        // var img = document.getElementById("metalic-bg");
+        // ctx.drawImage(img, 0, 0, c.width, c.height)
+        
+        for (let i = 0; i < circles.length - 1; i++) {
+            for (let j = i+1; j < circles.length; j++) {
+                var d = distanceBetween(circles[i], circles[j]);
+                if (d >= 100) continue;
+                ctx.strokeStyle = `rgb(${255-(d*2.5)},${255-(d*2.5)},${255-(d*2.5)})`;
+                ctx.beginPath();
+                ctx.moveTo(circles[i][0], circles[i][1]);
+                ctx.lineTo(circles[j][0], circles[j][1]);
+                ctx.stroke();
+                ctx.closePath();
+            }
+        }
+
+        circles.forEach(c => {
+            ctx.beginPath();
+            ctx.arc(c[0], c[1], r, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.closePath();
+        })
+
+        ctx.fillText( {{ .Title }} , c.width/2, 5*c.height/7);
+        ctx.strokeStyle = "#333333";
+        ctx.strokeText({{ .Title }}, c.width/2, 5*c.height/7);        
+
+        function distanceBetween(p1, p2) {
+            return Math.sqrt(((p1[0] - p2[0]) * (p1[0] - p2[0])) + ((p1[1] - p2[1]) * (p1[1] - p2[1])));
+        }
+            
+        for (let i = 0; i < circles.length; i++)
+        {
+            circles[i][0] += steps[i][0];
+            circles[i][1] += steps[i][1];
+            if (circles[i][0] > c.width - 2*r) { steps[i][0] =  -1 * Math.abs(steps[i][0]) ; }
+            if (circles[i][0] < 0) { steps[i][0] = Math.abs(steps[i][0]); }
+            if (circles[i][1] > c.height - 2*r) { steps[i][1] =  -1 * Math.abs(steps[i][1]) ; }
+            if (circles[i][1] < 0) { steps[i][1] = Math.abs(steps[i][1]); }
+        }
+    }
+
+    window.addEventListener('resize', function() {
+		new_viewport_width = document.documentElement.clientWidth;        
+        clearInterval(id);
+        drawBanner();
+    });
+</script>
