@@ -14,8 +14,8 @@
     var x = 0;
     const r = 4;
     var id;
-    let circles = [0, 20, 40]
-    var steps = [1, 1, 1];
+    let circles = [[0, 40], [20, 40], [40, 40]]
+    var steps = [[1,2], [1,0], [1,-2]];
     
     DrawBanner(viewport_width);
         
@@ -28,24 +28,26 @@
             }
             
             ctx.clearRect(0, 0, c.width, c.height);            
-            circles.forEach(x => {
+            circles.forEach(v => {
                 ctx.beginPath();
-                ctx.arc(x+r, 50, r, 0, 2 * Math.PI);
+                ctx.arc(v[0]+r, v[1], r, 0, 2 * Math.PI);
                 ctx.stroke();
             })            
             
             for (var i = 0; i<3; i++)
             {
-                circles[i] += steps[i];
-                if (circles[i] > c.width - 2*r) { steps[i] = -1; }
-                if (circles[i] < 0) { steps[i] = 1; }
+                circles[i][0] += steps[i][0];
+                circles[i][1] += steps[i][1];
+                if (circles[i][0] > c.width - 2*r) { steps[i][0] = -1; }
+                if (circles[i][0] < 0) { steps[i][0] = 1; }
+                if (circles[i][1] > c.height + r) { circles[i][1] = -r; }
+                if (circles[i][1] < -r) { circles[i][1] = c.height + r; }
             }
-        }, 1);
+        }, 50);
     }
 
     window.addEventListener('resize', function() {
-		new_viewport_width = document.documentElement.clientWidth;
-        console.log("new: ", new_viewport_width);
+		new_viewport_width = document.documentElement.clientWidth;        
         clearInterval(id);
         DrawBanner();
     });
