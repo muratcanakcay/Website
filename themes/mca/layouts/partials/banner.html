@@ -58,17 +58,17 @@
         {ctx.font = "bold 25px Sans-serif";}
         else
         {ctx.font = "bold 20px Sans-serif";}
-
         
         ctx.clearRect(0, 0, c.width, c.height);
-        // var img = document.getElementById("metalic-bg");
-        // ctx.drawImage(img, 0, 0, c.width, c.height)
+        var img = document.getElementById("metalic-bg");
+        ctx.drawImage(img, 0, 0, c.width, c.height)
         
         for (let i = 0; i < circles.length - 1; i++) {
             for (let j = i+1; j < circles.length; j++) {
                 var d = distanceBetween(circles[i], circles[j]);
-                if (d >= 100) continue;
-                ctx.strokeStyle = `rgb(${255-(d*2.5)},${255-(d*2.5)},${255-(d*2.5)})`;
+                if (d >= 120) continue;
+                var color = lineColor(d);
+                ctx.strokeStyle = `rgb(${color},${color},${color})`;                
                 ctx.beginPath();
                 ctx.moveTo(circles[i][0], circles[i][1]);
                 ctx.lineTo(circles[j][0], circles[j][1]);
@@ -76,7 +76,8 @@
                 ctx.closePath();
             }
         }
-
+        
+        ctx.strokeStyle = "#ffffff";
         circles.forEach(c => {
             ctx.beginPath();
             ctx.arc(c[0], c[1], r, 0, 2 * Math.PI);
@@ -86,11 +87,7 @@
 
         ctx.fillText( {{ .Title }} , c.width/2, 5*c.height/7);
         ctx.strokeStyle = "#333333";
-        ctx.strokeText({{ .Title }}, c.width/2, 5*c.height/7);        
-
-        function distanceBetween(p1, p2) {
-            return Math.sqrt(((p1[0] - p2[0]) * (p1[0] - p2[0])) + ((p1[1] - p2[1]) * (p1[1] - p2[1])));
-        }
+        ctx.strokeText({{ .Title }}, c.width/2, 5*c.height/7);                
             
         for (let i = 0; i < circles.length; i++)
         {
@@ -102,6 +99,14 @@
             if (circles[i][1] < 0) { steps[i][1] = Math.abs(steps[i][1]); }
         }
     }
+
+    function distanceBetween(p1, p2) {
+            return Math.sqrt(((p1[0] - p2[0]) * (p1[0] - p2[0])) + ((p1[1] - p2[1]) * (p1[1] - p2[1])));
+        }
+
+    function lineColor (d) {
+            return Math.min(280-(d*1.5), 255);
+        }
 
     window.addEventListener('resize', function() {
 		new_viewport_width = document.documentElement.clientWidth;        
