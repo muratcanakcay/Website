@@ -43,9 +43,10 @@
             c.width = viewport_width >= 1010 ? 1000 : viewport_width*0.9;
             c.height = c.width / 10 
         }
-        ctx.fillStyle = "#0000ff";
-        ctx.strokeStyle = "#000000";
+        
+        ctx.fillStyle = "#0000ff";        
         ctx.textAlign = "center";
+
         if (viewport_width > 900)
         {ctx.font = "bold 55px Sans-serif";}
         else if (viewport_width > 650)
@@ -66,7 +67,7 @@
         for (let i = 0; i < circles.length - 1; i++) {
             for (let j = i+1; j < circles.length; j++) {
                 var d = distanceBetween(circles[i], circles[j]);
-                if (d >= 120) continue;
+                if (d >= c.width/8.5) continue;
                 var color = lineColor(d);
                 ctx.strokeStyle = `rgb(${color},${color},${color})`;                
                 ctx.beginPath();
